@@ -1,6 +1,6 @@
 {
   "name": "zendesk-widget-vue",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Albert Tornehoj",
   "license": "MIT",
   "private": false,
@@ -32,6 +32,7 @@
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/test-utils": "^2.0.0-0",
     "eslint": "^8.23.0",
+    "eslint-import-resolver-typescript": "^3.5.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^9.4.0",
     "rollup": "^2.66.1",
@@ -51,8 +52,5 @@
     "type": "git",
     "url": "git+https://github.com/gradguard/zendesk-widget-vue.git"
   },
-  "homepage": "https://github.com/gradguard/zendesk-widget-vue#readme",
-  "dependencies": {
-    "eslint-import-resolver-typescript": "^3.5.0"
-  }
+  "homepage": "https://github.com/gradguard/zendesk-widget-vue#readme"
 }
