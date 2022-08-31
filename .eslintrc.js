@@ -21,16 +21,8 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    "import/no-extraneous-dependencies": 'off',
+    'import/no-extraneous-dependencies': 'off',
     camelcase: [0],
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: 'variable',
-        format: ['camelCase', 'PascalCase', 'UPPER_CASE', 'snake_case'],
-        trailingUnderscore: 'allow',
-      },
-    ],
     '@typescript-eslint/explicit-function-return-type': 0,
     'import/extensions': [0],
     'import/order': ['error', {
@@ -48,9 +40,9 @@ module.exports = {
       ignores: [],
     }],
     'vue/no-v-html': [0],
-    "vue/multi-word-component-names": ["error", {
-      "ignores": ["Zendesk"]
-    }]
+    'vue/multi-word-component-names': ['error', {
+      ignores: ['Zendesk'],
+    }],
   },
   overrides: [
     {
@@ -73,8 +65,8 @@ module.exports = {
     },
   ],
   settings: {
-    "import/resolver": {
-      typescript: {} // this loads <rootdir>/tsconfig.json to eslint
+    'import/resolver': {
+      typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
     },
   },
 };
