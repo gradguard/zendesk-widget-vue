@@ -6,24 +6,21 @@ Typescript functions to work with Zendesk Widget Vue 3
 
 `npm i zendesk-widget-vue`
 
-## 1. Add plugin
+## 1. Add global provider in your base component
 
 ```typescript
-import { zendeskPlugin } from 'zendesk-widget-vue';
+import { useZendeskProvider } from 'zendesk-widget-vue';
 
-createApp(App)
-  .use(zendeskPlugin)
-  .mount('#app');
+useZendeskProvider({
+  token: 'your-token',
+  settings: { webWidget: {} },
+});
 ```
 
-## 2. Call load component
+## 2. Call the Zendesk status in a child component
 
 ```vue
 <template>
-  <Zendesk
-    :token="zdToken"
-    :settings="{ webWidget: {} }"
-  />
   <div v-if="zdStatus.isLoading">
     ...Loading
   </div>
@@ -41,9 +38,8 @@ createApp(App)
 </template>
 
 <script setup lang="ts">
-import { useZendesk, Zendesk, zendesk } from 'zendesk-widget-vue';
+import { useZendesk, zendesk } from 'zendesk-widget-vue';
 
-const zdToken = process.env.VUE_APP_TOKEN;
 const { zdStatus } = useZendesk();
 </script>
 ```

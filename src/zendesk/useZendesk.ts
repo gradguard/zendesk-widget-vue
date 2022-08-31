@@ -1,6 +1,8 @@
-import { getCurrentInstance, inject } from 'vue';
+import {
+  getCurrentInstance, inject, provide, reactive,
+} from 'vue';
 
-import { ZendeskStatus, ZENDESK_PROVIDER } from './zendeskPlugin';
+import { loadScript } from './loadScript';
 import { ZendeskWidgetCommander } from './ZendeskWidgetCommander';
 import { ZendeskWidgetSettings } from './ZendeskWidgetSettings';
 
@@ -12,6 +14,60 @@ interface Window {
 }
 
 export const zendesk = window as unknown as Window;
+
+const ZENDESK_PROVIDER = 'ZENDESK_PROVIDER';
+
+interface ZendeskStatus {
+  isLoaded: boolean;
+  isLoading: boolean;
+  error?: Error;
+}
+
+interface ZendeskProviderProps {
+  token: string;
+  settings: ZendeskWidgetSettings;
+  onSuccess?: () => void;
+  onFinish?: () => void;
+  onError?: (error: Error) => void;
+}
+
+export const useZendeskProvider = ({
+  token,
+  settings,
+  onSuccess,
+  onFinish,
+  onError,
+}: ZendeskProviderProps) => {
+  const values = reactive<ZendeskStatus>({
+    isLoaded: false,
+    isLoading: true,
+    error: undefined,
+  });
+  provide(ZENDESK_PROVIDER, values);
+
+  loadScript({
+    script: `https://static.zdassets.com/ekr/snippet.js?key=${token}`,
+    onSuccess: () => {
+      zendesk.zESettings = settings;
+      values.isLoaded = true;
+      if (onSuccess) {
+        onSuccess();
+      }
+    },
+    onFinish: () => {
+      values.isLoading = false;
+      if (onFinish) {
+        onFinish();
+      }
+    },
+    onError: (error) => {
+      values.error = error;
+      if (onError) {
+        onError(error);
+      }
+    },
+  });
+};
 
 export const useZendesk = () => {
   if (!getCurrentInstance()?.proxy) {
