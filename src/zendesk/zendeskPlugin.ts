@@ -1,4 +1,4 @@
-import { App, reactive } from 'vue';
+import { reactive } from 'vue';
 
 export const ZENDESK_PROVIDER = 'ZENDESK_PROVIDER';
 
@@ -9,7 +9,7 @@ export interface ZendeskStatus {
 }
 
 export const zendeskPlugin = {
-  install: (app: App) => {
+  install: (app) => {
     const values = reactive<ZendeskStatus>({
       isLoaded: false,
       isLoading: true,
