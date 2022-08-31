@@ -21,7 +21,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'import/no-unresolved': 'warn',
     "import/no-extraneous-dependencies": 'off',
     camelcase: [0],
     '@typescript-eslint/naming-convention': [
@@ -73,4 +72,9 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    "import/resolver": {
+      typescript: {} // this loads <rootdir>/tsconfig.json to eslint
+    },
+  },
 };

@@ -55,5 +55,8 @@
     "type": "git",
     "url": "git+https://github.com/gradguard/zendesk-widget-vue.git"
   },
-  "homepage": "https://github.com/gradguard/zendesk-widget-vue#readme"
+  "homepage": "https://github.com/gradguard/zendesk-widget-vue#readme",
+  "dependencies": {
+    "eslint-import-resolver-typescript": "^3.5.0"
+  }
 }
