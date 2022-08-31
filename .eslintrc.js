@@ -21,7 +21,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'import/no-unresolved': 'error',
+    'import/no-unresolved': 'warn',
     "import/no-extraneous-dependencies": 'off',
     camelcase: [0],
     '@typescript-eslint/naming-convention': [
@@ -48,14 +48,10 @@ module.exports = {
       alignAttributesVertically: true,
       ignores: [],
     }],
-    'vue/max-attributes-per-line': ['error', {
-      singleline: 3,
-      multiline: {
-        max: 1,
-        allowFirstLine: false,
-      },
-    }],
     'vue/no-v-html': [0],
+    "vue/multi-word-component-names": ["error", {
+      "ignores": ["Zendesk"]
+    }]
   },
   overrides: [
     {

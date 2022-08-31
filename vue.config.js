@@ -1,5 +1,1 @@
-module.exports = {
-  devServer: {
-    before() {},
-  },
-};
+module.exports = {};
